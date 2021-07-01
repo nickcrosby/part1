@@ -1,17 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+//Here, the function defining the component has a parameter (props)
+const Hello = (props) => {
+  return (
+    <div>
+      <p>Hello {props.name}</p>
+    </div>
+  )
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//React component with the name 'App'
+const App = () => {
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello />
+    </div>
+  )
+}
+
+//This command renders the contents of 'App' into the div-element, having the id value 'root'
+ReactDOM.render(<App />, document.getElementById('root'))
