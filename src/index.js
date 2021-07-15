@@ -83,30 +83,43 @@ const tArray = [1, 2, 3]
 const tSquared = tArray.map(p => p * p)
 // tSquared is now [1, 4, 9]
 
+// header for rendering course name
+const Header = (props) => {
+  console.log(props)
+  return <h1>{props.course.name}</h1>
+}
+
+// content for rendering the parts of the course
+const Content = (props) => {
+  console.log(props)
+  return <p>{props.name}</p>
+}
+
 const App = () => {
   // you can define a constant within a constant that can be used in the return function
-  const course = 'Half Stack Application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const course = {
+    name: 'Half Stack Application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
 
   return (
     // all elements must be wrapped by at least one pair of div tags or empty tags
     <div>
-      <h1>{course}</h1>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <Header course={course} />
+      <Content parts={course.parts} />
     </div>
   )
 }
