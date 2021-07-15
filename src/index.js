@@ -95,6 +95,7 @@ const Content = (props) => {
   return <p>{props.name}</p>
 }
 
+/*
 const App = () => {
   // you can define a constant within a constant that can be used in the return function
   const course = {
@@ -114,12 +115,45 @@ const App = () => {
       }
     ]
   }
-
   return (
     // all elements must be wrapped by at least one pair of div tags or empty tags
     <div>
       <Header course={course} />
       <Content parts={course.parts} />
+    </div>
+  )
+}
+*/
+
+const Hello = ({ name, age }) => {
+  // if we find ourselves using props.name, etc. a lot,
+  // we can simplify it by assiging them to seperate variables (name & age)
+  // this method of assigning is called 'destructuring', as seen above
+
+  // if we have the age of the person being greeted,
+  // we can guess their year of bith
+  const bornYear = () => new Date().getFullYear() - age
+    // the function new Date(),getFullYear() is built-in and returns the current year
+  
+  return (
+    <div>
+      <p>
+        Hello {name}, you are {age} years old.
+      </p>
+      <p>So you were probably born in {bornYear()}.</p>
+    </div>
+  )
+}
+
+const App = () => {
+  const name = 'Peter'
+  const age = 10
+
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello name="Maya" age={26 + 10} />
+      <Hello name={name} age={age} />
     </div>
   )
 }
