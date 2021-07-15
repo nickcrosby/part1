@@ -61,6 +61,28 @@ const object3 = {
   department: 'Stanford University',
 }
 
+// the values of the properties can be any type, like integers, strings, arrays objects
+// the properties of an object are referenced by using the "dot" notation, or by using brackets
+console.log(object1.name)       // Arto Hellas is printed
+const fieldName = 'age'
+console.log(object1[fieldName]) // 35 is printed
+
+// arrow functions:
+const sum = (p1, p2) => {
+  console.log(p1)
+  console.log(p2)
+  return p1 + p2
+}
+
+// the function call for above:
+const result = sum(1, 5)
+console.log(result)
+
+// you can use a single expression to manipulate arrays
+const tArray = [1, 2, 3]
+const tSquared = tArray.map(p => p * p)
+// tSquared is now [1, 4, 9]
+
 const App = () => {
   // you can define a constant within a constant that can be used in the return function
   const course = 'Half Stack Application development'
