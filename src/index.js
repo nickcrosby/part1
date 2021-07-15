@@ -145,18 +145,27 @@ const Hello = ({ name, age }) => {
   )
 }
 
-const App = () => {
-  const name = 'Peter'
-  const age = 10
+// here we are going to try creating a counter where the value increased as a function of time (e.g. a clock)
+// this new application is dynamic and thus will have to utilise 'Page re-rendering'
 
+// the app component is given the value of the counter via the counter prop
+const App = (props) => {
+  const {counter} = {props}
   return (
-    <div>
-      <h1>Greetings</h1>
-      <Hello name="Maya" age={26 + 10} />
-      <Hello name={name} age={age} />
-    </div>
+    <div>{counter}</div>
   )
 }
 
-// This command renders the contents of 'App' into the div-element, having the id value 'root'
-ReactDOM.render(<App />, document.getElementById('root'))
+let counter = 1
+
+// we can get the component to rerender by calling the reactDOM.render multiple times, in the following way:
+const refresh = () => {
+  ReactDOM.render(<App counter={counter} />,
+    document.getElementById('root'))
+}
+
+setInterval(() => {
+  refresh()
+  counter += 1
+}, 1000)
+
