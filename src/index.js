@@ -12,24 +12,30 @@ const App = () => {
   // counter variable is assigned the initial value of state which is 0
   // setCounter variable is assigned to a function that will be used to modify the state
 
-  // the application calls the setTimeout function and passes it two parameters:
-  setTimeout(
-    // a function to increment the counter state
-    // the first time this is run, it will return the new value of the state: 1
-    // this will constantly increment upwards
-    () => setCounter(counter + 1),
-    // a timeout of 1 second
-    1000
-  )
+  // this is an event handler, which will perform a function everytime a button is clicked
+  // see the button under return (), everytime this button is pressed, this function is called
+  
+  /*
+  const handleClick = () => {
+    setCounter(counter + 1)
+  }
+  */
 
   // we can log the values of the component's variables to the console
   // this allows us to debug and test if something is going wrong
   console.log('rendering...', counter)
 
   // everytime the setCounter modifies the state it causes the component to rerender
-
   return (
-    <div>{counter}</div>
+    <div>
+      <div>{counter}</div>
+      <button onClick={() => setCounter(counter + 1)}>
+        plus
+      </button>
+      <button onClick={() => setCounter(0)}>
+        zero
+      </button>
+    </div>
   )
 }
 
