@@ -20,33 +20,49 @@ const Button = (props) => {
   )
 }
 
+const Button2 = (props) => {
+  return (
+    <button onClick={props.handleClick}>
+      
+    </button>
+  )
+}
+
 // here we are adding a state to our application's App component with the help of React's state hook
 const App = () => {
-  const [ counter,setCounter ] = useState(0)
+  // set the state of both the left and right counter to 0
+  // the application only has a single piece of state
+  // the event handlers have to take care of changing the entire application state
+  const [clicks, setClicks] = useState({
+    left: 0, right: 0
+  })
 
-  const increaseByOne = () => setCounter(counter + 1)
-  const decreaseByOne = () => setCounter(counter - 1)
-  const setToZero = () => setCounter(0)
+  // used to update the left counter
+  const handleLeftClick = () => {
+    // set the left counter to the new counter
+    // which is the previous state of left, + 1
+    setClicks({ ...clicks, left: clicks.left + 1})
+  }
 
-  console.log('rendering...', counter)
+  // used to update the right counter
+  const handleRightClick = () => {
+    // set the right counter to the new counter
+    // which is the previous state of right, + 1
+    setClicks({ ...clicks, right: clicks.right + 1})
+  }
 
   // the application's state is stored in App, but it is passed down to the Display component through props
   // using the component is straightforward, as we only need to pass the state of the counter to it
   return (
     <div>
-      <Display counter={counter}/>
-      <Button
-        handleClick={increaseByOne}
-        text='plus'
-      />
-      <Button
-        handleClick={setToZero}
-        text='zero'
-      />
-      <Button
-        handleClick={decreaseByOne}
-        text='minus'
-      />
+      {clicks.left}
+      <button onClick={handleLeftClick}>
+        left
+      </button>
+      <button onClick={handleRightClick}>
+        right
+      </button>
+      {clicks.right}
     </div>
   )
 }
