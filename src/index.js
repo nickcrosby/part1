@@ -30,6 +30,11 @@ const Button2 = (props) => {
 
 // here we are adding a state to our application's App component with the help of React's state hook
 const App = () => {
+  
+  // it is possible to render dynamic content inside of a component
+  const a = 10
+  const b = 20
+  
   // set the state of both the left and right counter to 0
   // the application only has a single piece of state
   // the event handlers have to take care of changing the entire application state
@@ -53,6 +58,11 @@ const App = () => {
 
   // the application's state is stored in App, but it is passed down to the Display component through props
   // using the component is straightforward, as we only need to pass the state of the counter to it
+
+  // when you have multiple consts in the App component, it is necessary to declare the return function
+
+  // any JavaScript code within the curly braces is evaluated and the result of this evaluation
+  // is embedded into the defined place in the HTML produced by the component
   return (
     <div>
       {clicks.left}
@@ -63,10 +73,13 @@ const App = () => {
         right
       </button>
       {clicks.right}
+      <p>{a} plus {b} is {a + b}</p>
     </div>
   )
 }
 
+// this command renders the contents of the <App /> component into the div-element,
+// as defined in the file public/index.html, having the id value 'root'
 ReactDOM.render(
   <App />, document.getElementById('root')
 )
