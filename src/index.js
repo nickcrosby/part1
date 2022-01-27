@@ -2,32 +2,37 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const App = () => {
-  // course and its parts now fit into a single JavaScript object
-  const course = {
-    name: 'Half Stack application development',
-      parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  }
+const Hello = ({ name, age }) => {
+  // since we reference props.x a few times in the code, it can help to streamlinse if we assign the
+  // values of the properties into two variables name and age which we can then use in our code.
+  // we can use destructing (as shown above) to make the assignment of variables even easier.
+
+  // the logic for guessing the year of birth is seperated into its own function.
+  // the person's age does not have to be passed as a parameter, since the function
+  // can directly access all props that are passed to the component (Hello).
+  const bornYear = () => new Date().getFullYear() - age // the date function built-in function for getting the current year (2022)
 
   return (
     <div>
-      <p>{course.name}</p>
-      <p>{course.parts[0].name} {course.parts[0].exercises}</p>
-      <p>{course.parts[1].name} {course.parts[1].exercises}</p>
-      <p>{course.parts[2].name} {course.parts[2].exercises}</p>
+      <p>
+        Hello {name}, you are {age} years old.
+      </p>
+      <p>
+        So you were probably born in {bornYear()}
+      </p>
+    </div>
+  )
+}
+
+const App = () => {
+  const name = 'Peter'
+  const age = 10
+
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello name="Maya" age={26+10} />
+      <Hello name={name} age={age} />
     </div>
   )
 }
